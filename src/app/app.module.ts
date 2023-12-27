@@ -1,18 +1,28 @@
+// App modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+// State management
 import { StoreModule } from '@ngrx/store';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// Layouts
+import { AuthComponent } from './layouts/auth/auth.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    //App modules
+    AppComponent,
+    // Layouts
+    AuthComponent,
+  ],
   imports: [
+    // App modules
     BrowserModule,
-    AppRoutingModule,
-    StoreModule.forRoot({}, {}),
     BrowserAnimationsModule,
+    AppRoutingModule,
+    // State management
+    StoreModule.forRoot({}, {}),
   ],
   providers: [],
   bootstrap: [AppComponent],

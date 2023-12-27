@@ -1,7 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthComponent } from './layouts/auth/auth.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'auth',
+    component: AuthComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./pages/auth/auth.module').then((m) => m.AuthModule),
+      },
+    ],
+  },
+];
 
 @NgModule({
   imports: [

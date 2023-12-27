@@ -1,0 +1,14 @@
+<main class="auth-layout h-screen w-screen md:grid md:grid-cols-5 text-white">
+  <div
+    class="md:col-span-2 md:h-screen h-48 flex flex-col items-center justify-center"
+  >
+    <div class="flex items-center justify-center gap-1">
+      <img src="../../../assets/icons/whatsapp.gif" alt="whatsapp" width="60" />
+      <span class="text-4xl font-bold">WhatsApp</span>
+    </div>
+    <h1 class="text-sm mt-2 tracking-wide">{{ pageAction }}</h1>
+  </div>
+  <div class="md:col-span-3 md:h-screen">
+    <router-outlet></router-outlet>
+  </div>
+</main>
