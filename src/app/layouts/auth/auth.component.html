@@ -1,14 +1,22 @@
-<main class="auth-layout h-screen w-screen md:grid md:grid-cols-5 text-white">
+<main
+  class="auth-layout h-screen w-screen text-white grid grid-rows-5 md:grid-cols-5 md:grid-rows-1"
+>
   <div
-    class="md:col-span-2 md:h-screen h-48 flex flex-col items-center justify-center"
+    class="md:h-screen md:col-span-2 flex flex-col items-center justify-center bg-primary-background"
   >
     <div class="flex items-center justify-center gap-1">
-      <img src="../../../assets/icons/whatsapp.gif" alt="whatsapp" width="60" />
+      <img
+        src="assets/icons/whatsapp.gif"
+        alt="whatsapp"
+        class="md:w-24 w-16"
+      />
       <span class="text-4xl font-bold">WhatsApp</span>
     </div>
-    <h1 class="text-sm mt-2 tracking-wide">{{ pageAction }}</h1>
+    <h1 class="mt-2 text-sm tracking-wide">{{ pageAction }}</h1>
   </div>
-  <div class="md:col-span-3 md:h-screen">
+  <div
+    class="md:w-full w-screen md:h-screen md:col-span-3 row-span-4 flex items-center justify-center bg-tertiary-background"
+  >
     <router-outlet></router-outlet>
   </div>
 </main>

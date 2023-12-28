@@ -1,0 +1,18 @@
+.login-page {
+  .google-btn {
+    padding: 3px;
+    border-radius: 3px;
+  }
+}
+:host {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  :host {
+    align-items: center;
+  }
+}

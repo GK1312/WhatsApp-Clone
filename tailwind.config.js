@@ -4,7 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "panel-header-background": "#202c33",
+        "primary-background": "#202c33",
+        "secondary-background": "#2E363C",
+        "tertiary-background": "#111b21",
+        "primary-text": "#a3aaac",
       },
     },
   },
