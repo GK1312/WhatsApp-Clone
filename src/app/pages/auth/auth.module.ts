@@ -13,15 +13,16 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 // Auth components
 import { GoogleLoginBtnComponent } from 'src/app/components/auth/google-login-btn/google-login-btn.component';
 import { ThemeBtnComponent } from 'src/app/components/theme-btn/theme-btn.component';
+import { CountryCodeSelectComponent } from 'src/app/components/country-code-select/country-code-select.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'sign-in', pathMatch: 'full' },
   {
-    path: 'login',
+    path: 'sign-in',
     component: LoginComponent,
     data: { title: 'LoginPageIsHere' },
   },
-  { path: 'register', component: RegisterComponent },
+  { path: 'sign-up', component: RegisterComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
 ];
 
@@ -32,6 +33,7 @@ const routes: Routes = [
     ForgotPasswordComponent,
     GoogleLoginBtnComponent,
     ThemeBtnComponent,
+    CountryCodeSelectComponent,
   ],
   imports: [
     CommonModule,

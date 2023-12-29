@@ -1,0 +1,10 @@
+<div *ngIf="control" (click)="selectCountryCode()" class="cursor-pointer">
+  <input
+    id="countryCode"
+    type="email"
+    [formControl]="control"
+    placeholder="Enter your email"
+    class="w-full max-w-28 mb-1 p-3 text-primary-text placeholder:font-thin bg-primary-background rounded-md outline-none border-none"
+    readonly
+  />
+</div>
