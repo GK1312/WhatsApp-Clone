@@ -1,0 +1,23 @@
+// Dialog Background styles
+.default-background {
+  background-color: var(--dialogBackground);
+}
+
+.blur-default-background {
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+// Dialog Content styles
+.theme-dialog {
+  .mat-mdc-dialog-container .mdc-dialog__surface {
+    box-shadow: none !important;
+    background-color: #111b21 !important;
+    border-radius: 15px !important;
+    overflow: hidden !important;
+    .mat-mdc-dialog-content {
+      padding: 14px !important;
+      max-height: calc(100vh - 115px) !important;
+    }
+  }
+}
