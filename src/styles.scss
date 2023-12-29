@@ -1,3 +1,19 @@
+@use "@angular/material" as mat;
+@include mat.core();
+$whatsapp-clone-primary: mat.define-palette(mat.$indigo-palette);
+$whatsapp-clone-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$whatsapp-clone-warn: mat.define-palette(mat.$red-palette);
+$whatsapp-clone-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $whatsapp-clone-primary,
+      accent: $whatsapp-clone-accent,
+      warn: $whatsapp-clone-warn,
+    ),
+  )
+);
+@include mat.all-component-themes($whatsapp-clone-theme);
+
 /* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
@@ -16,4 +32,8 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.mat-icon {
+  display: inline-flex !important;
 }

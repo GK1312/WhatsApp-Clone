@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // State management
 import { StoreModule } from '@ngrx/store';
+// Angular Material
+import { MatDialogModule } from '@angular/material/dialog';
 // Layouts
 import { AuthComponent } from './layouts/auth/auth.component';
 
@@ -23,6 +25,8 @@ import { AuthComponent } from './layouts/auth/auth.component';
     AppRoutingModule,
     // State management
     StoreModule.forRoot({}, {}),
+    // Angular Material
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
