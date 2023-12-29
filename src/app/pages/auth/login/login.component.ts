@@ -21,4 +21,9 @@ export class LoginComponent {
       '🚀 ~ file: login.component.ts:20 ~ LoginComponent ~ googleLogin ~ googleLogin:'
     );
   }
+  handleLogin() {
+    console.log(
+      '🚀 ~ file: login.component.ts:24 ~ LoginComponent ~ handleLogin ~ handleLogin:'
+    );
+  }
 }

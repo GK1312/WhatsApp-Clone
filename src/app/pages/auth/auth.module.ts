@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 // Auth components
 import { GoogleLoginBtnComponent } from 'src/app/components/auth/google-login-btn/google-login-btn.component';
+import { ThemeBtnComponent } from 'src/app/components/theme-btn/theme-btn.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -30,6 +31,7 @@ const routes: Routes = [
     RegisterComponent,
     ForgotPasswordComponent,
     GoogleLoginBtnComponent,
+    ThemeBtnComponent,
   ],
   imports: [
     CommonModule,

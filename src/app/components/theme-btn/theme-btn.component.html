@@ -1,0 +1,8 @@
+<button
+  [type]="btnType"
+  [disabled]="btnDisabled"
+  class="w-full mt-3 bg-green-500 hover:bg-green-400 disabled:bg-green-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all p-3 rounded-md text-white font-bold"
+  (click)="handleClickEvent()"
+>
+  {{ btnText }}
+</button>

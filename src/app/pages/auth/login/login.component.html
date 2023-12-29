@@ -1,5 +1,10 @@
 <div class="login-page w-full md:max-w-[600px] flex flex-col items-center">
-  <form [formGroup]="loginForm" action="" class="w-full p-6">
+  <form
+    [formGroup]="loginForm"
+    action=""
+    class="w-full p-6"
+    (ngSubmit)="handleLogin()"
+  >
     <div>
       <label for="email" class="text-xs text-primary-text">Email</label>
       <input
@@ -61,13 +66,11 @@
         </div>
       </div>
     </div>
-    <button
-      [disabled]="!loginForm.valid"
-      type="submit"
-      class="w-full mt-3 bg-green-500 hover:bg-green-400 disabled:bg-green-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all p-3 rounded-md text-white font-bold"
-    >
-      Log In
-    </button>
+    <app-theme-btn
+      btnText="Log In"
+      btnType="submit"
+      [btnDisabled]="!loginForm.valid"
+    ></app-theme-btn>
     <p class="text-center mt-3 text-xs text-primary-text">
       <a [routerLink]="['/auth/forgot-password']" class="t">Forgot Password?</a>
     </p>
