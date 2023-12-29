@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { CountryCode } from 'src/app/interfaces/countryCode';
 import { CountryCodeDialogService } from 'src/app/services/country-code-dialog.service';
 import { DialogService } from 'src/app/services/dialog.service';
 
@@ -26,7 +27,7 @@ export class CountryCodeSelectComponent {
   selectCountryCode() {
     this.countryCodeDialogService
       .openCountryCodeDialog(this.control?.value)
-      .subscribe((res) => {
+      .subscribe((res: CountryCode) => {
         if (res) {
           this.control?.setValue(res.countryCode);
         }

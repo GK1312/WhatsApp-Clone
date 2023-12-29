@@ -1,0 +1,25 @@
+<div mat-dialog-content class="text-primary-text">
+  <ul>
+    <li
+      *ngFor="let countryCode of countryCodes"
+      class="h-11 px-2 text-primary-text bg-primary-background rounded flex justify-between items-center mb-2 last:mb-0 transition-all cursor-pointer hover:bg-secondary-background hover:text-gray-200"
+      [ngClass]="{
+            'text-gray-200 bg-secondary-background': data?.selectedCountry === countryCode.countryCode
+          }"
+      (click)="onSelectCountryCode(countryCode)"
+    >
+      <img [src]="countryCode.image" alt="Country Flag" class="w-5 h-5 mr-3" />
+      <div
+        class="whitespace-nowrap w-full text-ellipsis overflow-hidden font-normal"
+      >
+        <span class="text-gray-400 me-1"> {{ countryCode.countryCode }} </span>
+        {{ countryCode.name }}
+      </div>
+      <mat-icon
+        *ngIf="data?.selectedCountry === countryCode.countryCode"
+        class="flex items-center float-left justify-center text-green-500"
+        >check_circle</mat-icon
+      >
+    </li>
+  </ul>
+</div>
