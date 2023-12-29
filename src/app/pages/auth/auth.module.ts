@@ -6,9 +6,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 // Material
 import { MatIconModule } from '@angular/material/icon';
-// Login components
+// Auth Pages
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+// Auth components
+import { GoogleLoginBtnComponent } from 'src/app/components/auth/google-login-btn/google-login-btn.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -18,10 +21,16 @@ const routes: Routes = [
     data: { title: 'LoginPageIsHere' },
   },
   { path: 'register', component: RegisterComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
 ];
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [
+    LoginComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
+    GoogleLoginBtnComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
