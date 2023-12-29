@@ -1,26 +1,34 @@
 <div class="login-page w-full md:max-w-[600px] flex flex-col items-center">
   <form [formGroup]="loginForm" class="w-full p-6" (ngSubmit)="handleLogin()">
     <div>
-      <label for="email" class="text-xs text-primary-text">Email</label>
-      <input
-        id="email"
-        type="email"
-        formControlName="email"
-        placeholder="Enter your email"
-        class="w-full mb-1 p-3 text-primary-text placeholder:font-thin bg-primary-background rounded-md outline-none border-none"
-      />
+      <label for="phoneNumber" class="text-xs text-primary-text"
+        >Phone Number</label
+      >
+      <div class="flex gap-3">
+        <app-country-code-select
+          [control]="countryCode"
+        ></app-country-code-select>
+        <input
+          id="phoneNumber"
+          type="text"
+          formControlName="phoneNumber"
+          placeholder="Enter your phone number"
+          class="w-full mb-1 p-3 text-primary-text placeholder:font-thin bg-primary-background rounded-md outline-none border-none"
+        />
+      </div>
       <div class="text-xs mb-1">
         <div
           *ngIf="
-            !loginForm.get('email')?.valid && loginForm.get('email')?.touched
+            !loginForm.get('phoneNumber')?.valid &&
+            loginForm.get('phoneNumber')?.touched
           "
           class="text-red-500"
         >
-          <span *ngIf="loginForm.get('email')?.hasError('required')"
-            >Email is required</span
+          <span *ngIf="loginForm.get('phoneNumber')?.hasError('required')"
+            >Phone number is required</span
           >
-          <span *ngIf="loginForm.get('email')?.hasError('email')"
-            >Email is invalid</span
+          <span *ngIf="loginForm.get('phoneNumber')?.hasError('pattern')"
+            >Phone number is invalid</span
           >
         </div>
       </div>

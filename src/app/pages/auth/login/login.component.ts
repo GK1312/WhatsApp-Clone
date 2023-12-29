@@ -9,7 +9,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class LoginComponent {
   showPassword: boolean = false;
   loginForm: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    countryCode: new FormControl('+91', [Validators.required]),
+    phoneNumber: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
       Validators.pattern('^[a-zA-Z0-9]{6,}$'),
@@ -25,5 +26,9 @@ export class LoginComponent {
     console.log(
       '🚀 ~ file: login.component.ts:24 ~ LoginComponent ~ handleLogin ~ handleLogin:'
     );
+  }
+
+  get countryCode() {
+    return this.loginForm.get('countryCode') as FormControl;
   }
 }
