@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-google-login-btn',
@@ -6,6 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./google-login-btn.component.scss'],
 })
 export class GoogleLoginBtnComponent {
+  @Input() btnText: string = '';
   @Output() login: EventEmitter<any> = new EventEmitter<any>();
   constructor() {}
   handleLogin() {
