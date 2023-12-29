@@ -1,1 +1,115 @@
-<p>register works!</p>
+<div class="register-page w-full md:max-w-[600px] flex flex-col items-center">
+  <form [formGroup]="registerForm" class="w-full p-6">
+    <div>
+      <label for="phoneNumber" class="text-xs text-primary-text"
+        >Phone Number</label
+      >
+      <div class="flex gap-3">
+        <app-country-code-select
+          [control]="countryCode"
+        ></app-country-code-select>
+        <input
+          id="phoneNumber"
+          type="text"
+          formControlName="phoneNumber"
+          placeholder="Enter your phone number"
+          class="w-full mb-1 p-3 text-primary-text placeholder:font-thin bg-primary-background rounded-md outline-none border-none"
+        />
+      </div>
+      <div class="text-xs mb-1">
+        <div
+          *ngIf="
+            !registerForm.get('phoneNumber')?.valid &&
+            registerForm.get('phoneNumber')?.touched
+          "
+          class="text-red-500"
+        >
+          <span *ngIf="registerForm.get('phoneNumber')?.hasError('required')"
+            >Phone number is required</span
+          >
+          <span *ngIf="registerForm.get('phoneNumber')?.hasError('pattern')"
+            >Phone number is invalid</span
+          >
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="email" class="text-xs text-primary-text">Email</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Enter your email"
+        class="w-full mb-1 p-3 text-primary-text placeholder:font-thin bg-primary-background rounded-md outline-none border-none"
+      />
+      <div class="text-xs mb-1">
+        <div
+          *ngIf="
+            !registerForm.get('email')?.valid &&
+            registerForm.get('email')?.touched
+          "
+          class="text-red-500"
+        >
+          <span *ngIf="registerForm.get('email')?.hasError('required')"
+            >Email address is required</span
+          >
+          <span *ngIf="registerForm.get('email')?.hasError('email')"
+            >Email address is invalid</span
+          >
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="password" class="text-xs text-primary-text">Password</label>
+      <div class="relative">
+        <input
+          id="password"
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+          placeholder="Enter your password"
+          autocomplete="off"
+          class="w-full mb-1 py-3 pl-3 pr-10 text-primary-text placeholder:font-thin bg-primary-background rounded-md outline-none border-none"
+        />
+        <mat-icon
+          (click)="showPassword = !showPassword"
+          aria-hidden="false"
+          aria-label="Example home icon"
+          [fontIcon]="showPassword ? 'visibility' : 'visibility_off'"
+          class="absolute right-3 top-[48%] transform -translate-y-1/2 text-primary-text cursor-pointer"
+        ></mat-icon>
+      </div>
+      <div class="text-xs mb-1">
+        <div
+          *ngIf="
+            !registerForm.get('password')?.valid &&
+            registerForm.get('password')?.touched
+          "
+          class="text-red-500"
+        >
+          <span *ngIf="registerForm.get('password')?.hasError('required')"
+            >Password is required</span
+          >
+          <span *ngIf="registerForm.get('password')?.hasError('pattern')"
+            >Password is invalid</span
+          >
+        </div>
+      </div>
+    </div>
+    <app-theme-btn
+      btnText="Sign Up"
+      btnType="submit"
+      [btnDisabled]="!registerForm.valid"
+    ></app-theme-btn>
+  </form>
+  <p class="text-[14px] text-center mb-6 tracking-wider">OR</p>
+  <app-google-login-btn
+    (login)="googleLogin()"
+    btnText="Sign Up with Google"
+  ></app-google-login-btn>
+  <p class="text-xs mt-auto mb-5 md:mt-4 text-center text-primary-text">
+    Already have an account?
+    <a [routerLink]="['/auth/sign-in']" class="text-green-500 font-bold"
+      >Sign In</a
+    >
+  </p>
+</div>

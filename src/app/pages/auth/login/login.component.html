@@ -1,10 +1,5 @@
 <div class="login-page w-full md:max-w-[600px] flex flex-col items-center">
-  <form
-    [formGroup]="loginForm"
-    action=""
-    class="w-full p-6"
-    (ngSubmit)="handleLogin()"
-  >
+  <form [formGroup]="loginForm" class="w-full p-6" (ngSubmit)="handleLogin()">
     <div>
       <label for="email" class="text-xs text-primary-text">Email</label>
       <input
@@ -67,7 +62,7 @@
       </div>
     </div>
     <app-theme-btn
-      btnText="Log In"
+      btnText="Sign In"
       btnType="submit"
       [btnDisabled]="!loginForm.valid"
     ></app-theme-btn>
@@ -76,10 +71,13 @@
     </p>
   </form>
   <p class="text-[14px] text-center mb-6 tracking-wider">OR</p>
-  <app-google-login-btn (login)="googleLogin()"></app-google-login-btn>
+  <app-google-login-btn
+    (login)="googleLogin()"
+    btnText="Sign In with Google"
+  ></app-google-login-btn>
   <p class="text-xs mt-auto mb-5 md:mt-4 text-center text-primary-text">
     Don't have an account?
-    <a [routerLink]="['/auth/register']" class="text-green-500 font-bold"
+    <a [routerLink]="['/auth/sign-up']" class="text-green-500 font-bold"
       >Sign Up</a
     >
   </p>
