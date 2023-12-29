@@ -15,4 +15,10 @@ export class LoginComponent {
       Validators.pattern('^[a-zA-Z0-9]{6,}$'),
     ]),
   });
+  constructor() {}
+  googleLogin() {
+    console.log(
+      '🚀 ~ file: login.component.ts:20 ~ LoginComponent ~ googleLogin ~ googleLogin:'
+    );
+  }
 }
