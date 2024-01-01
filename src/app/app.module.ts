@@ -10,6 +10,13 @@ import { StoreModule } from '@ngrx/store';
 import { MatDialogModule } from '@angular/material/dialog';
 // Layouts
 import { AuthComponent } from './layouts/auth/auth.component';
+// Firebase modules
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+// Environment variables
+import { environment } from 'src/environments/environment.development';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +24,7 @@ import { AuthComponent } from './layouts/auth/auth.component';
     AppComponent,
     // Layouts
     AuthComponent,
+    HomeComponent,
   ],
   imports: [
     // App modules
@@ -27,6 +35,10 @@ import { AuthComponent } from './layouts/auth/auth.component';
     StoreModule.forRoot({}, {}),
     // Angular Material
     MatDialogModule,
+    // Firebase modules
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent],
