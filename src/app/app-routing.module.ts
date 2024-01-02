@@ -19,12 +19,12 @@ const routes: Routes = [
   },
   {
     path: '',
+    canActivate: [authGuard],
     children: [
       {
         path: '',
         pathMatch: 'full',
         component: HomeComponent,
-        canActivate: [authGuard],
       },
     ],
   },
