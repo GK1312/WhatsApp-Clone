@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GoogleAuthProvider } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 import { Observable, from, switchMap } from 'rxjs';
 // import { FirebaseApp } from 'firebase/app';
 
@@ -9,7 +10,7 @@ import { Observable, from, switchMap } from 'rxjs';
 })
 export class AuthService {
   user!: Observable<any>;
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private afAuth: AngularFireAuth, private router: Router) {
     this.user = this.afAuth.authState;
   }
 
@@ -31,6 +32,8 @@ export class AuthService {
   }
 
   logout() {
-    return this.afAuth.signOut();
+    return this.afAuth.signOut().then(() => {
+      this.router.navigate(['/auth/sign-in']);
+    });
   }
 }

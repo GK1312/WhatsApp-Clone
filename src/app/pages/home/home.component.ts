@@ -8,9 +8,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
   logout() {
     this.authService.logout();
-    this.router.navigate(['/auth/sign-in']);
   }
 }
