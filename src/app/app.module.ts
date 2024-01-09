@@ -16,6 +16,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 // Environment variables
 import { environment } from 'src/environments/environment.development';
+// Pages
 import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { HomeComponent } from './pages/home/home.component';
     AppComponent,
     // Layouts
     AuthComponent,
+    // Pages
     HomeComponent,
   ],
   imports: [

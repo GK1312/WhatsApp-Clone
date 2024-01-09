@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { OnboardingComponent } from '../user/onboarding/onboarding.component';
 // Auth components
 import { GoogleLoginBtnComponent } from 'src/app/components/auth/google-login-btn/google-login-btn.component';
 import { ThemeBtnComponent } from 'src/app/components/theme-btn/theme-btn.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   },
   { path: 'sign-up', component: RegisterComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'onboarding', component: OnboardingComponent },
 ];
 
 @NgModule({
@@ -31,6 +33,7 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
+    OnboardingComponent,
     GoogleLoginBtnComponent,
     ThemeBtnComponent,
     CountryCodeSelectComponent,

@@ -14,22 +14,24 @@ export const authGuard: CanActivateFn = async (
 ): Promise<boolean | UrlTree> => {
   const authService = inject(AuthService) as AuthService;
   const router = inject(Router) as Router;
-  const userAuth = await authService.checkUserAuthentication();
+  const [userAuth, userData] = await authService.checkUserAuthentication();
+  const isAuthRoute = [
+    '/auth/sign-in',
+    '/auth/sign-up',
+    '/auth/forgot-password',
+  ].includes(state.url);
   if (!userAuth) {
-    if (
-      ['/auth/sign-in', '/auth/sign-up', '/auth/forgot-password'].includes(
-        state.url
-      )
-    ) {
+    if (isAuthRoute) {
       return true;
     } else {
       router.navigate(['/auth/sign-in']);
       return false;
     }
   } else {
-    ['/auth/sign-in', '/auth/sign-up', '/auth/forgot-password'].includes(
-      state.url
-    ) && router.navigate(['/']);
+    userData?.multiFactor?.user?.providerData[0]?.phoneNumber === null
+      ? (['/'].includes(state.url) || isAuthRoute) &&
+        router.navigate(['/auth/onboarding'])
+      : isAuthRoute && router.navigate(['/user']);
     return true;
   }
 };

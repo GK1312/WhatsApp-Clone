@@ -30,13 +30,13 @@ export class AuthService {
     );
   }
 
-  checkUserAuthentication(): Promise<boolean> {
+  checkUserAuthentication(): Promise<boolean | any> {
     return new Promise((resolve, reject) => {
       const userAuth = this.afAuth.authState.subscribe((user) => {
         if (user) {
-          resolve(true);
+          resolve([true, user]);
         } else {
-          resolve(false);
+          resolve([false, null]);
         }
         userAuth.unsubscribe();
       });
