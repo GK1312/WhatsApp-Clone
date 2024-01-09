@@ -5,28 +5,31 @@ import {
   Router,
   UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
 import { inject } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AuthService } from '../services/auth/auth.service';
 
-export const authGuard: CanActivateFn = (
+export const authGuard: CanActivateFn = async (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
-): Observable<boolean | UrlTree> | Promise<boolean> | boolean | UrlTree => {
-  const authService = inject(AngularFireAuth) as AngularFireAuth;
+): Promise<boolean | UrlTree> => {
+  const authService = inject(AuthService) as AuthService;
   const router = inject(Router) as Router;
-  return authService.authState.pipe(
-    take(1),
-    map((user) => {
-      if (user) {
-        ['/auth/sign-in', '/auth/sign-up', '/auth/forgot-password'].includes(
-          state.url
-        ) && router.navigate(['/']);
-        return true;
-      } else {
-        return router.createUrlTree(['/auth/sign-in']);
-      }
-    })
-  );
+  const userAuth = await authService.checkUserAuthentication();
+  if (!userAuth) {
+    if (
+      ['/auth/sign-in', '/auth/sign-up', '/auth/forgot-password'].includes(
+        state.url
+      )
+    ) {
+      return true;
+    } else {
+      router.navigate(['/auth/sign-in']);
+      return false;
+    }
+  } else {
+    ['/auth/sign-in', '/auth/sign-up', '/auth/forgot-password'].includes(
+      state.url
+    ) && router.navigate(['/']);
+    return true;
+  }
 };

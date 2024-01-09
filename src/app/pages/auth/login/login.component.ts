@@ -22,19 +22,6 @@ export class LoginComponent {
     ]),
   });
   constructor(private authService: AuthService, private router: Router) {}
-  logout() {
-    this.authService
-      .logout()
-      .then(() => {
-        alert('Logged out successfully');
-      })
-      .catch((error) => {
-        console.log(
-          '🚀 ~ file: login.component.ts:24 ~ LoginComponent ~ logout ~ error:',
-          error
-        );
-      });
-  }
   googleLogin() {
     this.authService.signInWithGoogle().subscribe(
       (user) => {

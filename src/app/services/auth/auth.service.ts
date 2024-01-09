@@ -3,7 +3,6 @@ import { GoogleAuthProvider } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { Observable, from, switchMap } from 'rxjs';
-// import { FirebaseApp } from 'firebase/app';
 
 @Injectable({
   providedIn: 'root',
@@ -31,9 +30,22 @@ export class AuthService {
     );
   }
 
+  checkUserAuthentication(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      const userAuth = this.afAuth.authState.subscribe((user) => {
+        if (user) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+        userAuth.unsubscribe();
+      });
+    });
+  }
+
   logout() {
     return this.afAuth.signOut().then(() => {
-      this.router.navigate(['/auth/sign-in']);
+      window.location.reload();
     });
   }
 }
